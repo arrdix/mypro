@@ -3,7 +3,14 @@ import { Separator } from '@/components/ui/separator'
 export function InventoryCard(): JSX.Element {
     return (
         <div className="flex flex-col border rounded-lg px-4">
-            <p className="font-bold py-2">Mangga</p>
+            <div className="flex flex-col py-2">
+                <p className="font-bold">Mangga</p>
+                <div className="flex gap-1">
+                    <p className="text-xs text-muted">
+                        <span className="font-bold"># </span>ABC
+                    </p>
+                </div>
+            </div>
             <Separator />
             <div className="flex justify-between py-3">
                 <div className="flex flex-col">
