@@ -8,6 +8,7 @@ import {
     TableHeader,
     TableRow,
 } from '@/components/ui/table'
+import { currencyFormatter } from '@/utils/helper'
 
 export function TransactionDetail(): JSX.Element {
     const { id } = useParams()
@@ -33,14 +34,18 @@ export function TransactionDetail(): JSX.Element {
                                 <TableRow>
                                     <TableCell>10</TableCell>
                                     <TableCell>Mangga</TableCell>
-                                    <TableCell>10000</TableCell>
-                                    <TableCell className="text-right">100000</TableCell>
+                                    <TableCell>{currencyFormatter(10000)}</TableCell>
+                                    <TableCell className="text-right">
+                                        {currencyFormatter(10000)}
+                                    </TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell>10</TableCell>
                                     <TableCell>Mangga</TableCell>
-                                    <TableCell>10000</TableCell>
-                                    <TableCell className="text-right">100000</TableCell>
+                                    <TableCell>{currencyFormatter(10000)}</TableCell>
+                                    <TableCell className="text-right">
+                                        {currencyFormatter(10000)}
+                                    </TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
@@ -48,7 +53,7 @@ export function TransactionDetail(): JSX.Element {
                             <p className="font-bold">Grand Total</p>
                             <div className="flex gap-1">
                                 <p className="text-xs font-bold">RP</p>
-                                <p className="font-bold">1000000</p>
+                                <p className="font-bold">{currencyFormatter(100000)}</p>
                             </div>
                         </div>
                     </div>

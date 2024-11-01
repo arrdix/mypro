@@ -7,6 +7,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { currencyFormatter } from '@/utils/helper'
 
 export function ProductCard(): JSX.Element {
     return (
@@ -38,7 +39,7 @@ export function ProductCard(): JSX.Element {
                         <p className="text-xs text-muted">Price</p>
                         <div className="flex gap-1">
                             <p className="text-xs font-bold">RP</p>
-                            <p className="text-xl font-bold">2000</p>
+                            <p className="text-xl font-bold">{currencyFormatter(3000)}</p>
                         </div>
                     </div>
                     <Button

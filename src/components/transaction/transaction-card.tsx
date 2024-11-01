@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
+import { currencyFormatter } from '@/utils/helper'
 import { Copy, SquareArrowOutUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -38,7 +39,7 @@ export function TransactionCard(): JSX.Element {
                     <p className="text-xs text-muted">Total</p>
                     <div className="flex gap-1">
                         <p className="text-xs font-bold">RP</p>
-                        <p className="text-xl font-bold">10000</p>
+                        <p className="text-xl font-bold">{currencyFormatter(21000)}</p>
                     </div>
                 </div>
             </div>
