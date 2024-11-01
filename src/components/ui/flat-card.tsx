@@ -34,7 +34,7 @@ const Body = forwardRef<HTMLDivElement, Body>(({ children, className, ...props }
 Body.displayName = 'Body'
 
 export type BodyItem = HTMLProps<HTMLDivElement>
-const BodyItem = forwardRef<HTMLDivElement, Body>(({ children, className, ...props }, ref) => {
+const BodyItem = forwardRef<HTMLDivElement, BodyItem>(({ children, className, ...props }, ref) => {
     return (
         <div ref={ref} className={cn('flex flex-col', className)} {...props}>
             {children}
@@ -44,7 +44,7 @@ const BodyItem = forwardRef<HTMLDivElement, Body>(({ children, className, ...pro
 BodyItem.displayName = 'Body.Item'
 
 export type Footer = HTMLProps<HTMLDivElement>
-const Footer = forwardRef<HTMLDivElement, Body>(({ children, className, ...props }, ref) => {
+const Footer = forwardRef<HTMLDivElement, Footer>(({ children, className, ...props }, ref) => {
     return (
         <div
             ref={ref}
