@@ -11,3 +11,8 @@ export interface Transaction {
     Products: TransactionProduct[]
     Total: number
 }
+
+export interface TransactionResponse {
+    Message: string
+    Data: Transaction[]
+}
