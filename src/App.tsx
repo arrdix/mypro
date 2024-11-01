@@ -1,5 +1,15 @@
+import { Layout } from '@/layout/layout'
+import { Inventory } from '@/pages/inventory'
+import { Route, Routes } from 'react-router-dom'
+
 function App(): JSX.Element {
-    return <h1 className="text-9xl font-bold">MyPro Solusindo Informatika</h1>
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Inventory />} />
+            </Route>
+        </Routes>
+    )
 }
 
 export default App
