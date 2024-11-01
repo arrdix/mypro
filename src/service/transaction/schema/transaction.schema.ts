@@ -1,4 +1,4 @@
-import { productSchema } from '@/service/schema/product.schema'
+import { productSchema } from '@/service/product/schema/product.schema'
 import { z } from 'zod'
 
 export const transactionProductSchema = productSchema.extend({
