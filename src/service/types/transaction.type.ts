@@ -1,4 +1,4 @@
-import { Product } from '@/components/service/types/product.type'
+import { Product } from '@/service/types/product.type'
 
 export interface TransactionProduct extends Product {
     Quantity: number
