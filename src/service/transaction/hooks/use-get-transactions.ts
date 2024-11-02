@@ -1,12 +1,24 @@
+import { UseQueryReturn } from '@/service/shared/use-query-return.type'
 import { TransactionApiService } from '@/service/transaction/api'
 import { Transaction } from '@/service/transaction/types/transaction.type'
-import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 
-export function useGetTransaction(): UseQueryResult<Transaction[], Error> {
+export interface UseGetTransactionReturn extends UseQueryReturn {
+    transactions?: Transaction[] | null
+}
+
+export function useGetTransaction(): UseGetTransactionReturn {
     const api = new TransactionApiService()
 
-    return useQuery({
+    const {
+        data: transactions,
+        error,
+        isPending,
+        isFetching,
+    } = useQuery({
         queryKey: ['transactions'],
         queryFn: () => api.getAll(),
     })
+
+    return { transactions, error, isPending, isFetching }
 }
