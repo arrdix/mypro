@@ -1,4 +1,4 @@
-import { Error } from '@/components/error/error'
+import { ErrorMessage } from '@/components/error/error-message'
 import { InventoryCard } from '@/components/inventory/inventory-card'
 import { InventoryOverview } from '@/components/inventory/inventory-overview'
 import { InventorySkeleton } from '@/components/skeleton/inventory-skeleton'
@@ -12,7 +12,7 @@ export function Inventory(): JSX.Element {
     }
 
     if (!inventory) {
-        return <Error />
+        return <ErrorMessage />
     }
 
     return (

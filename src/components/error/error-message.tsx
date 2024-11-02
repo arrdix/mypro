@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 
-export function Error(): JSX.Element {
+export function ErrorMessage(): JSX.Element {
     function reloadPage(): void {
         window.location.reload()
     }

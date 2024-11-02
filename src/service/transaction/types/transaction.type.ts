@@ -14,5 +14,5 @@ export interface Transaction {
 
 export interface TransactionResponse {
     Message: string
-    Data: Transaction[]
+    Data: Transaction[] | null
 }
