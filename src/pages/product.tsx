@@ -21,7 +21,12 @@ export function Product(): JSX.Element {
             <div className="flex flex-col gap-2">
                 <p className="text-xs text-muted">Products</p>
                 {products.map((product) => (
-                    <ProductCard key={product.Id} name={product.Name} price={product.Price} />
+                    <ProductCard
+                        key={product.Id}
+                        id={product.Id}
+                        name={product.Name}
+                        price={product.Price}
+                    />
                 ))}
             </div>
         </div>

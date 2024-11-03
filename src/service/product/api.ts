@@ -19,8 +19,14 @@ export class ProductApiService {
         return response.data.Data
     }
 
-    async update(dto: UpdateProductDto): Promise<Product[] | null> {
-        const response = await api.put<ProductResponse>('/product', dto)
+    async update(id: string, dto: UpdateProductDto): Promise<Product[] | null> {
+        const response = await api.put<ProductResponse>(`/product/${id}`, dto)
+
+        return response.data.Data
+    }
+
+    async delete(id: string): Promise<Product[] | null> {
+        const response = await api.delete<ProductResponse>(`/product/${id}`)
 
         return response.data.Data
     }
