@@ -59,7 +59,7 @@ export function CustomProductSelect({
                                 onChange={(e) => onSearchProduct(e.target.value)}
                             />
                         </div>
-                        {selectProducts &&
+                        {selectProducts?.length ? (
                             selectProducts.map((product) => (
                                 <Button
                                     key={product.Id}
@@ -77,7 +77,10 @@ export function CustomProductSelect({
                                         </div>
                                     </div>
                                 </Button>
-                            ))}
+                            ))
+                        ) : (
+                            <p className="text-sm px-4 py-2">Product not found.</p>
+                        )}
                     </div>
                 )}
             </div>

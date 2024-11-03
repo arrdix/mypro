@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -12,6 +12,7 @@ import {
 import { CustomProductSelect } from '@/components/ui/custom-product-select'
 import { useGetProduct } from '@/service/product/hooks/use-get-product'
 import { useCreateTransaction } from '@/service/transaction/hooks/use-create-transaction'
+import { Product } from '@/service/product/types/product.type'
 
 interface ValidateStockParams {
     productId: string
@@ -26,8 +27,10 @@ interface AutoFillField {
 
 export function CreateTransactionForm(): JSX.Element {
     const { createTransaction } = useCreateTransaction()
-    const { inventory } = useGetInventory()
     const { products } = useGetProduct()
+    const { inventory } = useGetInventory()
+
+    const [availableProducts, setAvailableProducts] = useState<Product[] | undefined>(products)
 
     const {
         register,
@@ -70,9 +73,11 @@ export function CreateTransactionForm(): JSX.Element {
                 if (value.Products) {
                     const selected = value.Products.map((product) => product?.Id)
 
-                    products?.filter((product) => {
+                    const availableProduct = products?.filter((product) => {
                         return !selected.includes(product.Id)
                     })
+
+                    setAvailableProducts(availableProduct)
                 }
             }
         })
@@ -126,10 +131,10 @@ export function CreateTransactionForm(): JSX.Element {
 
                     return (
                         <div key={field.id} className="flex flex-col">
-                            <div className="flex ">
+                            <div className="flex">
                                 <CustomProductSelect
                                     index={index}
-                                    products={products}
+                                    products={availableProducts}
                                     setValue={setValue}
                                 />
                                 {fields.length > 1 && (
