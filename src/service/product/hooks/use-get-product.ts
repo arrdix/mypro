@@ -18,6 +18,9 @@ export function useGetProduct(): UseGetProductReturn {
     } = useQuery({
         queryKey: ['products'],
         queryFn: () => api.getAll(),
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        refetchOnMount: false,
     })
 
     return { products, error, isPending, isFetching }
