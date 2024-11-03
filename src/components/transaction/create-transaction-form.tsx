@@ -24,7 +24,7 @@ interface AutoFillField {
     index: number
 }
 
-export function TransactionForm(): JSX.Element {
+export function CreateTransactionForm(): JSX.Element {
     const { createTransaction } = useCreateTransaction()
     const { inventory } = useGetInventory()
     const { products } = useGetProduct()
@@ -44,7 +44,7 @@ export function TransactionForm(): JSX.Element {
         resolver: zodResolver(transactionSchema),
         defaultValues: {
             Code: '',
-            Products: [{ Id: '', Name: '', Price: 0, Quantity: 0, Subtotal: 0 }],
+            Products: [{ Id: '', Price: 0, Quantity: 0, Subtotal: 0 }],
             Total: 0,
         },
     })
@@ -196,7 +196,7 @@ export function TransactionForm(): JSX.Element {
                 <Button
                     type="button"
                     variant="outline"
-                    onClick={() => append({ Id: '', Name: '', Price: 0, Quantity: 0, Subtotal: 0 })}
+                    onClick={() => append({ Id: '', Price: 0, Quantity: 0, Subtotal: 0 })}
                 >
                     Add More Product
                 </Button>

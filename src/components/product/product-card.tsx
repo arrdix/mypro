@@ -28,7 +28,7 @@ interface ProductCardProps {
 export function ProductCard({ id, name, price }: ProductCardProps): JSX.Element {
     const { deleteProduct } = useDeleteProduct()
 
-    async function onDelete() {
+    async function onDelete(): Promise<void> {
         await deleteProduct({ id })
     }
 
