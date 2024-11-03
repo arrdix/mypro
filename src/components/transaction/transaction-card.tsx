@@ -4,6 +4,7 @@ import { Product } from '@/service/product/types/product.type'
 import { currencyFormatter } from '@/utils/helper'
 import { Copy, SquareArrowOutUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 
 interface TransactionCardProps {
     code: string
@@ -14,6 +15,7 @@ interface TransactionCardProps {
 export function TransactionCard({ code, products, total }: TransactionCardProps): JSX.Element {
     function copyCode(): void {
         navigator.clipboard.writeText(code)
+        toast('Copied to clipboard.')
     }
 
     return (

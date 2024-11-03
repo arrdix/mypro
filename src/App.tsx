@@ -1,3 +1,4 @@
+import { NotFound } from '@/components/error/not-found'
 import { Layout } from '@/layout/layout'
 import { Inventory } from '@/pages/inventory'
 import { Product } from '@/pages/product'
@@ -13,6 +14,7 @@ function App(): JSX.Element {
                 <Route path="product" element={<Product />} />
                 <Route path="transaction" element={<Transaction />} />
                 <Route path="transaction/:id" element={<TransactionDetail />} />
+                <Route path="*" element={<NotFound />}></Route>
             </Route>
         </Routes>
     )

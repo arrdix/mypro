@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { forwardRef, HTMLProps, ReactNode } from 'react'
 
 export function FlatCard({ children }: { children: ReactNode }): JSX.Element {
-    return <div className="flex flex-col border rounded-lg px-4">{children}</div>
+    return <div className="w-full flex flex-col border rounded-lg px-4">{children}</div>
 }
 
 export type Header = HTMLProps<HTMLDivElement>

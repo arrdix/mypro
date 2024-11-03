@@ -1,4 +1,5 @@
 import { NavItem } from '@/components/navbar/nav-item'
+import { Toaster } from '@/components/ui/sonner'
 import { Calculator, CircleUserRound, Package, Rows3 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
@@ -45,6 +46,7 @@ export function Layout(): JSX.Element {
                     variant={activePath === paths.transaction ? 'active' : 'default'}
                 />
             </div>
+            <Toaster toastOptions={{}} position="top-center" />
         </div>
     )
 }

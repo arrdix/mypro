@@ -11,5 +11,6 @@ export type CreateTransactionProductDto = z.infer<typeof createTransactionProduc
 export const createTransactionDto = z.object({
     Code: z.string(),
     Products: z.array(createTransactionProductDto),
+    Total: z.number(),
 })
 export type CreateTransactionDto = z.infer<typeof createTransactionDto>
