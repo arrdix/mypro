@@ -10,7 +10,7 @@ import {
     SheetTrigger,
 } from '@/components/ui/sheet'
 import { useMemo } from 'react'
-import { TransactionForm } from '@/components/transaction/transaction-form'
+import { CreateTransactionForm } from '@/components/transaction/create-transaction-form'
 
 interface TransactionOverviewProps {
     transactions: Transaction[]
@@ -44,7 +44,7 @@ export function TransactionOverview({ transactions }: TransactionOverviewProps):
                         </SheetDescription>
                     </SheetHeader>
                     <div className="max-h-[500px] overflow-y-auto">
-                        <TransactionForm />
+                        <CreateTransactionForm />
                     </div>
                 </SheetContent>
             </Sheet>
