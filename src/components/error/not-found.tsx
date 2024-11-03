@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
 
-export function NotFound(): JSX.Element {
+function NotFound(): JSX.Element {
     const navigate = useNavigate()
 
     function backToPreviousPage(): void {
@@ -18,3 +18,5 @@ export function NotFound(): JSX.Element {
         </div>
     )
 }
+
+export default NotFound

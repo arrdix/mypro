@@ -3,9 +3,18 @@ import { InventoryCard } from '@/components/inventory/inventory-card'
 import { InventoryOverview } from '@/components/inventory/inventory-overview'
 import { InventorySkeleton } from '@/components/skeleton/inventory-skeleton'
 import { useGetInventory } from '@/service/inventory/hooks/use-get-inventory'
+import { useMemo } from 'react'
 
-export function Inventory(): JSX.Element {
+function Inventory(): JSX.Element {
     const { inventory, isPending, isFetching } = useGetInventory()
+
+    const totalStocks = useMemo(() => {
+        if (inventory) {
+            return inventory.reduce((currentStock, product) => {
+                return currentStock + product.Stock
+            }, 0)
+        }
+    }, [inventory])
 
     if (isPending || isFetching) {
         return <InventorySkeleton />
@@ -17,7 +26,7 @@ export function Inventory(): JSX.Element {
 
     return (
         <div className="flex flex-col gap-6">
-            <InventoryOverview inventory={inventory} />
+            <InventoryOverview totalStock={totalStocks} totalProduct={inventory.length} />
             <div className="flex flex-col gap-2">
                 <p className="text-xs text-muted">Inventory</p>
                 {inventory.map((product) => (
@@ -32,3 +41,5 @@ export function Inventory(): JSX.Element {
         </div>
     )
 }
+
+export default Inventory

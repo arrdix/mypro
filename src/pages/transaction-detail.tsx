@@ -13,11 +13,11 @@ import { FlatCard } from '@/components/ui/flat-card'
 import { useGetTransaction } from '@/service/transaction/hooks/use-get-transactions'
 import { TransactionDetailSkeleton } from '@/components/skeleton/transaction-detail-skeleton'
 import { ErrorMessage } from '@/components/error/error-message'
-import { NotFound } from '@/components/error/not-found'
 import { useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import NotFound from '@/components/error/not-found'
 
-export function TransactionDetail(): JSX.Element {
+function TransactionDetail(): JSX.Element {
     const { id: code } = useParams()
     const { transactions, isPending, isFetching } = useGetTransaction()
 
@@ -107,3 +107,5 @@ export function TransactionDetail(): JSX.Element {
         </div>
     )
 }
+
+export default TransactionDetail

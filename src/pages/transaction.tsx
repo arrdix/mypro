@@ -3,9 +3,18 @@ import { TransactionSkeleton } from '@/components/skeleton/transaction-skeleton'
 import { TransactionCard } from '@/components/transaction/transaction-card'
 import { TransactionOverview } from '@/components/transaction/transaction-overview'
 import { useGetTransaction } from '@/service/transaction/hooks/use-get-transactions'
+import { useMemo } from 'react'
 
-export function Transaction(): JSX.Element {
+function Transaction(): JSX.Element {
     const { transactions, isPending, isFetching } = useGetTransaction()
+
+    const revenue = useMemo(() => {
+        if (transactions) {
+            return transactions.reduce((currentRevenue, transaction) => {
+                return currentRevenue + transaction.Total
+            }, 0)
+        }
+    }, [transactions])
 
     if (isPending || isFetching) {
         return <TransactionSkeleton />
@@ -17,7 +26,7 @@ export function Transaction(): JSX.Element {
 
     return (
         <div className="flex flex-col gap-6">
-            <TransactionOverview transactions={transactions} />
+            <TransactionOverview revenue={revenue} />
             <div className="flex flex-col gap-2">
                 <p className="text-xs text-muted">Transactions</p>
                 {transactions.map((transaction) => (
@@ -32,3 +41,5 @@ export function Transaction(): JSX.Element {
         </div>
     )
 }
+
+export default Transaction

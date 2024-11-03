@@ -1,5 +1,4 @@
 import { Overview } from '@/components/ui/overview'
-import { Transaction } from '@/service/transaction/types/transaction.type'
 import { currencyFormatter } from '@/utils/helper'
 import {
     Sheet,
@@ -9,27 +8,20 @@ import {
     SheetTitle,
     SheetTrigger,
 } from '@/components/ui/sheet'
-import { useMemo } from 'react'
 import { CreateTransactionForm } from '@/components/transaction/create-transaction-form'
 
 interface TransactionOverviewProps {
-    transactions: Transaction[]
+    revenue?: number
 }
 
-export function TransactionOverview({ transactions }: TransactionOverviewProps): JSX.Element {
-    const revenue = useMemo(() => {
-        return transactions.reduce((currentRevenue, transaction) => {
-            return currentRevenue + transaction.Total
-        }, 0)
-    }, [transactions])
-
+export function TransactionOverview({ revenue }: TransactionOverviewProps): JSX.Element {
     return (
         <Overview>
             <Overview.Body>
                 <Overview.Title>Revenue</Overview.Title>
                 <Overview.Content>
                     <p className="text-sm font-bold">RP</p>
-                    <p className="text-4xl font-bold">{currencyFormatter(revenue)}</p>
+                    <p className="text-4xl font-bold">{currencyFormatter(revenue!)}</p>
                 </Overview.Content>
             </Overview.Body>
             <Sheet>

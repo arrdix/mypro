@@ -3,9 +3,18 @@ import { ProductCard } from '@/components/product/product-card'
 import { ProductOverview } from '@/components/product/product-overview'
 import { ProductSkeleton } from '@/components/skeleton/product-skeleton'
 import { useGetProduct } from '@/service/product/hooks/use-get-product'
+import { useMemo } from 'react'
 
-export function Product(): JSX.Element {
+function Product(): JSX.Element {
     const { products, isPending, isFetching } = useGetProduct()
+
+    const stockValue = useMemo(() => {
+        if (products) {
+            return products.reduce((currentValue, product) => {
+                return currentValue + product.Price
+            }, 0)
+        }
+    }, [products])
 
     if (isPending || isFetching) {
         return <ProductSkeleton />
@@ -17,7 +26,7 @@ export function Product(): JSX.Element {
 
     return (
         <div className="flex flex-col gap-6">
-            <ProductOverview products={products} />
+            <ProductOverview stockValue={stockValue} />
             <div className="flex flex-col gap-2">
                 <p className="text-xs text-muted">Products</p>
                 {products.map((product) => (
@@ -32,3 +41,5 @@ export function Product(): JSX.Element {
         </div>
     )
 }
+
+export default Product
