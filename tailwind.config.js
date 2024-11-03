@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: ['class'],
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
@@ -10,6 +11,7 @@ export default {
                 accent: '#40becf',
                 muted: '#858585',
                 error: '#eb0000',
+                danger: '#e30000',
                 success: '#00a329',
                 link: '#b0b0b0',
             },
@@ -26,5 +28,5 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [require('tailwindcss-animate')],
 }
