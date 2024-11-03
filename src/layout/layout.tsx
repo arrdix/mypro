@@ -38,7 +38,7 @@ export function Layout(): JSX.Element {
             <div className="flex justify-between items-center sticky top-0 py-4 px-6 shadow-base">
                 <p className="font-bold">{title}</p>
                 <Avatar>
-                    <AvatarImage src="/avatar.png" loading="lazy" />
+                    <AvatarImage src="/avatar.png" loading="lazy" alt="Profile icon" />
                     <AvatarFallback>
                         <CircleUserRound />
                     </AvatarFallback>
