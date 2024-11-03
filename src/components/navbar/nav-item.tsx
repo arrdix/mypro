@@ -28,8 +28,13 @@ interface NavItemProps extends VariantProps<typeof navItemVariant> {
 export const NavItem = forwardRef<HTMLButtonElement, NavItemProps>(
     ({ className, variant, ...props }, ref) => {
         return (
-            <Link to={props.to}>
-                <button ref={ref} className={cn(navItemVariant({ variant }), className)} {...props}>
+            <Link to={props.to} aria-label="nav-button">
+                <button
+                    ref={ref}
+                    className={cn(navItemVariant({ variant }), className)}
+                    {...props}
+                    aria-label="nav-button"
+                >
                     {props.icon}
                 </button>
             </Link>
