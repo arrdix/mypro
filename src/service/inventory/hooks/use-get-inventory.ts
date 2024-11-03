@@ -18,6 +18,9 @@ export function useGetInventory(): UseGetInventoryReturn {
     } = useQuery({
         queryKey: ['inventory'],
         queryFn: () => api.getAll(),
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        refetchOnMount: false,
     })
 
     return { inventory, error, isPending, isFetching }

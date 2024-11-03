@@ -18,6 +18,9 @@ export function useGetTransaction(): UseGetTransactionReturn {
     } = useQuery({
         queryKey: ['transactions'],
         queryFn: () => api.getAll(),
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        refetchOnMount: false,
     })
 
     return { transactions, error, isPending, isFetching }
